@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import Veector
 
 class VeectorTests: XCTestCase {
     
@@ -21,16 +22,50 @@ class VeectorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testSubtraction() {
+        let a = CGVector(dx: 3, dy: 7)
+        let b = CGVector(dx: 4, dy: 2)
+        let c = a - b
+        XCTAssertEqual(CGVector(dx: -1, dy: 5), c, "Vector subtraction")
+        
+        let d = b - a
+        XCTAssertEqual(CGVector(dx: 1, dy: -5), d, "Vector subtraction")
+        
+        let e = CGVector(dx: -1, dy: 44.2)
+        let f = CGVector(dx: 7.1, dy: 0)
+        let g = e - f
+        XCTAssertEqual(CGVector(dx: -8.1, dy: 44.2), g, "Vector subtraction")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testAddition() {
+        let a = CGVector(dx: 3, dy: 7)
+        let b = CGVector(dx: 4, dy: 2)
+        let c = a + b
+        XCTAssertEqual(CGVector(dx: 7, dy: 9), c, "Vector subtraction")
+        
+        let d = CGVector(dx: -1, dy: 44.2)
+        let e = CGVector(dx: 7.1, dy: 0)
+        let g = d + e
+        XCTAssertEqual(CGVector(dx: 6.1, dy: 44.2), g, "Vector subtraction")
     }
     
+    func testMagnitude() {
+        let v1 = CGVector(dx: 3, dy: 4)
+        XCTAssertTrue(magnitude(v1) == 5, "3, 4, 5 triangle -- vector magnituce")
+        
+        let v2 = CGVector(dx: 5, dy: 12)
+        XCTAssertTrue(magnitude(v2) == 13, "5, 12, 13 triangle -- vector magnituce")
+    }
+    
+    func testNormalizeZeroVector() {
+        XCTAssertTrue(normalize(CGVector.zeroVector) == CGVector.zeroVector, "zero vector normalized is the zero vector")
+    }
+    
+    func testNormalize() {
+        let x = CGFloat(6.0 * sqrt(2.0)/2.0)
+        let v = CGVector(dx: x, dy: x)
+        
+        let vv = CGVector(dx: 1.0/sqrt(2.0), dy: 1.0/sqrt(2.0))
+        XCTAssertEqual(normalize(v), vv, "test normalize")
+    }
 }

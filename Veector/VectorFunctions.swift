@@ -28,3 +28,7 @@ public func normalize(v: CGVector) -> CGVector {
     let m = magnitude(v)
     return CGVector(dx: v.dx/m, dy: v.dy/m)
 }
+
+public func + (lhs: CGPoint, rhs: CGVector) -> CGPoint {
+    return CGPoint(x: lhs.x+rhs.dx, y: lhs.y+rhs.dy)
+}

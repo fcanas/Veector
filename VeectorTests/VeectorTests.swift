@@ -68,4 +68,12 @@ class VeectorTests: XCTestCase {
         let vv = CGVector(dx: 1.0/sqrt(2.0), dy: 1.0/sqrt(2.0))
         XCTAssertEqual(normalize(v), vv, "test normalize")
     }
+    
+    func testVectorPointAddition() {
+        let v = CGVector(dx: 3, dy: 7)
+        let p = CGPoint(x: 4, y: 2)
+        let p2 = p + v
+        XCTAssertEqual(CGPoint(x: 7, y: 9), p2, "Vector point addition")
+
+    }
 }

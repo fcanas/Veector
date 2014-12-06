@@ -32,3 +32,10 @@ public func normalize(v: CGVector) -> CGVector {
 public func + (lhs: CGPoint, rhs: CGVector) -> CGPoint {
     return CGPoint(x: lhs.x+rhs.dx, y: lhs.y+rhs.dy)
 }
+
+infix operator • { associativity left precedence 160 }
+
+public func • (lhs: CGVector, rhs: CGVector) -> CGFloat {
+    return lhs.dx*rhs.dx + lhs.dy*rhs.dy
+}
+

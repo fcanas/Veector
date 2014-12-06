@@ -74,6 +74,11 @@ class VeectorTests: XCTestCase {
         let p = CGPoint(x: 4, y: 2)
         let p2 = p + v
         XCTAssertEqual(CGPoint(x: 7, y: 9), p2, "Vector point addition")
-
+    }
+    
+    func testDotProduct() {
+        let v1 = CGVector(dx: 3, dy: 7)
+        let v2 = CGVector(dx: 3, dy: 7)
+        XCTAssertTrue(v1 • v2 == 58, "Vector dot product")
     }
 }

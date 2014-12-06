@@ -37,16 +37,45 @@ class VeectorTests: XCTestCase {
         XCTAssertEqual(CGVector(dx: -8.1, dy: 44.2), g, "Vector subtraction")
     }
     
+    func testSubtractionAssignment() {
+        var a = CGVector(dx: 3, dy: 7)
+        var b = CGVector(dx: 4, dy: 2)
+        a -= b
+        XCTAssertEqual(CGVector(dx: -1, dy: 5), a, "Vector subtraction")
+        
+        a = CGVector(dx: 3, dy: 7)
+        b = CGVector(dx: 4, dy: 2)
+        b -= a
+        XCTAssertEqual(CGVector(dx: 1, dy: -5), b, "Vector subtraction")
+        
+        var c = CGVector(dx: -1, dy: 44.2)
+        let d = CGVector(dx: 7.1, dy: 0)
+        c -= d
+        XCTAssertEqual(CGVector(dx: -8.1, dy: 44.2), c, "Vector subtraction")
+    }
+    
     func testAddition() {
         let a = CGVector(dx: 3, dy: 7)
         let b = CGVector(dx: 4, dy: 2)
         let c = a + b
-        XCTAssertEqual(CGVector(dx: 7, dy: 9), c, "Vector subtraction")
+        XCTAssertEqual(CGVector(dx: 7, dy: 9), c, "Vector Addition")
         
         let d = CGVector(dx: -1, dy: 44.2)
         let e = CGVector(dx: 7.1, dy: 0)
         let g = d + e
-        XCTAssertEqual(CGVector(dx: 6.1, dy: 44.2), g, "Vector subtraction")
+        XCTAssertEqual(CGVector(dx: 6.1, dy: 44.2), g, "Vector Addition")
+    }
+    
+    func testAdditionAssignment() {
+        var a = CGVector(dx: 3, dy: 7)
+        let b = CGVector(dx: 4, dy: 2)
+        a += b
+        XCTAssertEqual(CGVector(dx: 7, dy: 9), a, "Vector Addition Assignment")
+        
+        var c = CGVector(dx: -1, dy: 44.2)
+        let d = CGVector(dx: 7.1, dy: 0)
+        c += d
+        XCTAssertEqual(CGVector(dx: 6.1, dy: 44.2), c, "Vector subtraction")
     }
     
     func testMagnitude() {

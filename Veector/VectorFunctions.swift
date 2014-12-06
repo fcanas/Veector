@@ -13,8 +13,16 @@ public func - (lhs: CGVector, rhs: CGVector) -> CGVector {
     return CGVector(dx: lhs.dx-rhs.dx, dy: lhs.dy-rhs.dy)
 }
 
+public func -= (inout lhs: CGVector, rhs: CGVector) {
+    lhs = CGVector(dx: lhs.dx-rhs.dx, dy: lhs.dy-rhs.dy)
+}
+
 public func + (lhs: CGVector, rhs: CGVector) -> CGVector {
     return CGVector(dx: lhs.dx+rhs.dx, dy: lhs.dy+rhs.dy)
+}
+
+public func += (inout lhs: CGVector, rhs: CGVector) {
+    lhs = CGVector(dx: lhs.dx+rhs.dx, dy: lhs.dy+rhs.dy)
 }
 
 public func magnitude(v: CGVector) -> CGFloat {

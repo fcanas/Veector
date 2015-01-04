@@ -41,9 +41,24 @@ public func + (lhs: CGPoint, rhs: CGVector) -> CGPoint {
     return CGPoint(x: lhs.x+rhs.dx, y: lhs.y+rhs.dy)
 }
 
+public func += (inout lhs: CGPoint, rhs: CGVector) {
+    lhs = CGPoint(x: lhs.x+rhs.dx, y: lhs.y+rhs.dy)
+}
+
+public func - (lhs: CGPoint, rhs: CGPoint) -> CGVector {
+    return CGVector(dx: lhs.x-rhs.x, dy: lhs.y-rhs.y)
+}
+
 infix operator • { associativity left precedence 160 }
 
 public func • (lhs: CGVector, rhs: CGVector) -> CGFloat {
     return lhs.dx*rhs.dx + lhs.dy*rhs.dy
 }
 
+public func * (lhs: CGVector, rhs: CGFloat) -> CGVector {
+    return CGVector(dx: lhs.dx*rhs, dy: lhs.dy*rhs)
+}
+
+public func / (lhs: CGVector, rhs: CGFloat) -> CGVector {
+    return CGVector(dx: lhs.dx/rhs, dy: lhs.dy/rhs)
+}
